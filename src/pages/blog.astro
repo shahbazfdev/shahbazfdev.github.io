@@ -11,7 +11,7 @@ const posts = (await getCollection('blog')).sort(
 const featuredPost = posts.find(post => post.data.featured) || posts[0];
 const regularPosts = posts.filter(post => post !== featuredPost);
 ---
-<Layout title="Blogs" description="Thoughts on UI/UX design, frontend development, and the realities of full-time freelancing.">
+<Layout title="Blogs" description="Technical insights on AI research, ML implementation, and high-performance software engineering.">
   <div>
     <!-- HERO BLOG -->
     <section class="pt-36 pb-16 relative overflow-hidden">
@@ -19,7 +19,7 @@ const regularPosts = posts.filter(post => post !== featuredPost);
       <div class="max-w-6xl mx-auto px-6 relative z-10">
         <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Writing</p>
         <h1 class="reveal reveal-delay-1 font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">The Blog</h1>
-        <p class="reveal reveal-delay-2 text-lg text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed">Thoughts on UI/UX design, frontend development, and the realities of full-time freelancing. No fluff.</p>
+        <p class="reveal reveal-delay-2 text-lg text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed">Technical insights on AI research, ML implementation, and high-performance software engineering.</p>
 
         <!-- Filter tags -->
         <div class="reveal reveal-delay-3 flex flex-wrap gap-2 mt-8">

@@ -23,6 +23,8 @@ A high-performance, aesthetically driven portfolio website built with Astro 6 an
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Icons:** [Lucide React](https://lucide.dev/) (via Astro)
 - **Deployment:** [Vercel](https://vercel.com/)
+- **Virtualization:** [Podman](https://podman.io/) & [Podman Compose](https://github.com/containers/podman-compose)
+- **OS Compatibility:** Optimized for [Fedora](https://fedoraproject.org/) and other RHEL-based distributions
 - **Animations:** CSS Transitions & Intersection Observer
 
 ---
@@ -35,35 +37,40 @@ git clone https://github.com/your-username/your-repo-name.git
 cd your-repo-name
 ```
 
-### 2. Install dependencies
+### 2. Local Setup
 ```bash
 npm install
-```
-
-### 3. Run development server
-```bash
 npm run dev
 ```
 Your site is now running at `http://localhost:4321`.
 
-### 4. Build for production
+### 3. Containerized Setup (Podman)
+If you prefer a containerized environment (highly recommended for Fedora/RHEL users), you can use Podman Compose:
+
 ```bash
-npm run build
+podman-compose up
 ```
+This will start a development sandbox with all dependencies isolated.
 
 ---
 
-## Deployment on Vercel
+## Deployment and Containerization
 
+### Vercel (Cloud)
 This project is optimized for deployment on Vercel.
 
-1. **Push your code to GitHub.**
-2. **Import your project** into Vercel.
-3. Vercel will automatically detect **Astro** and use the correct build settings:
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-   - **Install Command:** `npm install`
-4. **Deploy!**
+1. Push your code to GitHub.
+2. Import your project into Vercel.
+3. Vercel will automatically detect Astro and use the correct build settings.
+
+### Podman (Production Image)
+For self-hosting or production containerization, a `Containerfile.prod` is provided:
+
+```bash
+podman build -t portfolio-prod -f Containerfile.prod .
+podman run -d -p 8080:80 portfolio-prod
+```
+This creates a lightweight Nginx-based image containing only the compiled static files.
 
 ---
 

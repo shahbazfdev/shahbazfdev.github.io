@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from 'astro:assets';
+import error from "../images/pngegg.png";
+---
+
+<Layout title="404 — Page Not Found">
+  <div class="flex-grow flex flex-col items-center justify-center px-6 py-20 text-center relative overflow-hidden">
+    <!-- Glow background -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/15 rounded-full blur-[120px] pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative z-10 flex flex-col items-center">
+      <!-- Image with reveal -->
+      <div class="reveal mb-10">
+        <Image 
+          src={error} 
+          alt="404 Error" 
+          class="w-64 md:w-80 h-auto object-contain drop-shadow-2xl" 
+        />
+      </div>
+
+      <div class="max-w-xl">
+        <h1 class="reveal d1 font-display font-bold text-6xl md:text-8xl text-zinc-900 dark:text-white mb-6 tracking-tighter">
+          404
+        </h1>
+        <p class="reveal d2 text-lg md:text-xl text-zinc-500 dark:text-zinc-400 mb-12 leading-relaxed">
+          Oops! The page you're looking for has vanished into the digital void.
+        </p>
+
+        <a 
+          href="/" 
+          class="reveal d3 inline-flex items-center gap-2 bg-accent text-white px-10 py-4 rounded-full font-display font-bold text-sm hover:bg-accent-light transition-all shadow-lg shadow-accent/20 shimmer"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to safety
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

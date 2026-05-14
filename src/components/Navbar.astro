@@ -1,0 +1,49 @@
+---
+const pathname = Astro.url.pathname;
+const isHome = pathname === '/' || pathname === '/index.html';
+---
+
+<nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+
+    <a href={isHome ? "#hero" : "/"} class="font-display font-bold text-xl tracking-tight relative z-10">
+    <span class="text-zinc-900 dark:text-white">shah</span><span class="text-accent">baz</span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-8 text-sm" role="list" id="desktop-nav">
+    <li><a href={isHome ? "services" : "/services"} data-section="services" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Services</a></li>
+    <li><a href={isHome ? "projects" : "/projects"} data-section="work" class={`nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors ${pathname.startsWith('/projects') || pathname.startsWith('/case-study') ? 'on !text-zinc-900 dark:!text-white' : ''}`}>Projects</a></li>
+    <li><a href={isHome ? "about" : "/about"} data-section="about" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">About</a></li>
+    <li><a href={isHome ? "blog" : "/blog"} data-section="blog" class={`nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors ${pathname.startsWith('/blog') ? 'on !text-zinc-900 dark:!text-white' : ''}`}>Blog</a></li>
+    <li><a href={isHome ? "contact" : "/contact"} data-section="contact" class="nl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-3">
+    <!-- dark toggle -->
+    <button id="theme-toggle" class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors" aria-label="Toggle dark mode">
+        <svg id="icon-sun" class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+        <svg id="icon-moon" class="w-4 h-4 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+    <!-- hire me -->
+    <a href={isHome ? "#contact" : "/#contact"} class="hidden md:inline-flex items-center gap-2 shimmer bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
+        Hire me <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+    
+    <!-- CSS-ONLY MOBILE MENU TOGGLE -->
+    <label for="menu-toggle" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 cursor-pointer select-none">
+        <input type="checkbox" id="menu-toggle" class="hidden peer" />
+        <svg class="w-4 h-4 peer-checked:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="w-4 h-4 hidden peer-checked:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        
+        <!-- MOBILE MENU CONTENT -->
+        <div class="fixed inset-x-0 top-16 hidden peer-checked:block bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900 shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+            <ul class="flex flex-col px-6 py-5 gap-4 text-sm font-medium" role="list">
+                <li><a href={isHome ? "#services" : "/#services"} class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Services</a></li>
+                <li><a href="/projects" class={`block transition-colors ${pathname.startsWith('/projects') ? 'text-accent' : 'text-zinc-700 dark:text-zinc-300 hover:text-accent'}`}>Projects</a></li>
+                <li><a href="/about" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">About</a></li>
+                <li><a href="/blog" class={`block transition-colors ${pathname.startsWith('/blog') ? 'text-accent' : 'text-zinc-700 dark:text-zinc-300 hover:text-accent'}`}>Blog</a></li>
+                <li><a href="/#contact" class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">Contact</a></li>
+            </ul>
+        </div>
+    </label>
+    </div>
+</nav>

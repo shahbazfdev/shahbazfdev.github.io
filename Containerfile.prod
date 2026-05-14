@@ -1,0 +1,33 @@
+# ==========================================
+# STAGE 1: The Builder 
+# Purpose: Compiles the Astro code into pure HTML
+# ==========================================
+FROM docker.io/node:22-alpine AS builder
+
+WORKDIR /app
+
+# Copy dependency manifests first (for caching)
+COPY package*.json ./
+RUN npm install
+
+# Copy your actual practice code
+COPY . .
+
+# This command strips all the Node.js development bloat 
+# and generates the static files in the /dist folder
+RUN npm run build
+
+# ==========================================
+# STAGE 2: The Edge Server (Production)
+# Purpose: Serves the static files lightning fast
+# ==========================================
+FROM docker.io/nginx:alpine
+
+# Take ONLY the compiled HTML from Stage 1 and put it in Nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Expose standard HTTP port
+EXPOSE 80
+
+# Start Nginx daemon
+CMD ["nginx", "-g", "daemon off;"]

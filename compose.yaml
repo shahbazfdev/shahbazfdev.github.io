@@ -1,0 +1,10 @@
+services:
+  dev-server:
+    image: docker.io/node:22-alpine
+    container_name: astro-dev-sandbox
+    working_dir: /app
+    ports:
+      - "4321:4321"
+    volumes:
+      - ./:/app:Z
+    command: sh -c "npm install --legacy-peer-deps && npm run dev -- --host 0.0.0.0"

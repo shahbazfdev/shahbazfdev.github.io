@@ -1,0 +1,97 @@
+# 🌌 Shahbaz Fareed — Portfolio
+
+A high-performance, aesthetically driven portfolio website built with **Astro 6** and **Tailwind CSS**. Designed for AI/ML Researchers and Software Engineers, featuring a sleek dark mode, smooth transitions, and a modern project showcase.
+
+![Portfolio Preview](https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426&ixlib=rb-4.0.3)
+
+---
+
+## ✨ Features
+
+- 🚀 **Built with Astro 6**: Ultra-fast performance with zero-JS by default.
+- 🎨 **Modern Aesthetics**: Premium design with dark/light mode support.
+- 📱 **Fully Responsive**: Optimized for all devices from mobile to desktop.
+- 🛠️ **Project Showcase**: Detailed case studies and project grids.
+- 📝 **Blog Engine**: Built-in support for technical articles and insights.
+- 📬 **Contact System**: Integrated contact form for inquiries.
+- 🧪 **AI/ML Focus**: Tailored sections for research and intelligent systems.
+- ⚡ **Optimized Assets**: Image optimization and lazy loading.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Astro](https://astro.build/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Icons:** [Lucide React](https://lucide.dev/) (via Astro)
+- **Deployment:** [Vercel](https://vercel.com/)
+- **Animations:** CSS Transitions & Intersection Observer
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Run development server
+```bash
+npm run dev
+```
+Your site is now running at `http://localhost:4321`!
+
+### 4. Build for production
+```bash
+npm run build
+```
+
+---
+
+## 🌐 Deployment on Vercel
+
+This project is optimized for deployment on Vercel.
+
+1. **Push your code to GitHub.**
+2. **Import your project** into Vercel.
+3. Vercel will automatically detect **Astro** and use the correct build settings:
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+   - **Install Command:** `npm install`
+4. **Deploy!** 🚀
+
+---
+
+## 📂 Project Structure
+
+```text
+/
+├── public/          # Static assets (images, fonts, etc.)
+├── src/
+│   ├── components/  # Reusable UI components
+│   ├── layouts/     # Page layouts
+│   ├── pages/       # Routes and views
+│   ├── styles/      # Global CSS and Tailwind
+│   └── constants.ts # Site metadata and configuration
+├── astro.config.mjs # Astro configuration
+└── tailwind.config.mjs # Tailwind configuration
+```
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  By <a href="https://github.com/shahbazfareed">Shahbaz Fareed</a>
+</p>

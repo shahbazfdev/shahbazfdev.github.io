@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import ProjectsCard from '../components/ProjectsCard.astro';
+
+const { searchParams } = Astro.url;
+const filter = searchParams.get('filter') || 'all';
+
+const allProjectsRaw = await getCollection('projects');
+const allProjects = allProjectsRaw
+  .filter(p => filter === 'all' || p.data.tags[0]?.toLowerCase() === filter)
+  .sort((a, b) => b.data.order - a.data.order);
+
+const filterOptions = [
+  { value: 'all',       label: `All (${allProjectsRaw.length})` },
+  { value: 'ai',        label: 'AI & ML' },
+  { value: 'software',  label: 'Software' },
+  { value: 'apps',      label: 'Apps' },
+];
+---
+<Layout title="Projects">
+  <div>
+    <section class="pt-36 pb-12 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-80 h-80 bg-accent/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="max-w-6xl mx-auto px-6 relative z-10">
+        <p class="reveal text-xs font-medium text-accent tracking-widest uppercase mb-3">Portfolio</p>
+        <h1 class="reveal font-display font-bold text-5xl md:text-6xl text-zinc-900 dark:text-white leading-tight mb-4">All Projects</h1>
+        <p class="reveal text-lg text-zinc-500 dark:text-zinc-400 max-w-xl leading-relaxed mb-8">A comprehensive look at my work across AI & ML research, intelligent RAG systems, and robust software engineering.</p>
+        <div class="reveal flex flex-wrap gap-2" id="filter-container">
+          {filterOptions.map(f => (
+            <a
+              href={`/projects${f.value === 'all' ? '' : `?filter=${f.value}`}`}
+              class={`text-sm px-4 py-1.5 rounded-full border transition-colors ${f.value === filter ? 'bg-accent text-white border-accent' : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-accent'}`}
+            >
+              {f.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+          {allProjects.map((p, index) => (
+            <div class="project-wrapper" transition:animate="fade">
+              <ProjectsCard project={p} index={index} />
+            </div>
+          ))}
+        </div>
+        {allProjects.length === 0 && (
+          <div id="no-projects" class="text-center py-20">
+            <p class="text-zinc-400 text-sm">No projects in this category yet.</p>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <section class="pb-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="bg-zinc-900 dark:bg-zinc-800 rounded-3xl p-10 md:p-14 text-center relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-64 h-64 bg-accent/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 w-40 h-40 bg-accent/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="relative z-10">
+            <p class="text-xs font-medium text-accent tracking-widest uppercase mb-4">Let's collaborate</p>
+            <h2 class="font-display font-bold text-3xl md:text-4xl text-white mb-4">Building something intelligent?</h2>
+            <p class="text-zinc-400 max-w-md mx-auto mb-8">I'm always looking for challenging problems in AI, Machine Learning, and Software Engineering. Let's discuss how we can work together.</p>
+            <a href="/#contact" class="inline-flex items-center gap-2 btn-primary bg-accent text-white font-medium px-8 py-3.5 rounded-full hover:bg-accent-light transition-colors">Get in touch &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

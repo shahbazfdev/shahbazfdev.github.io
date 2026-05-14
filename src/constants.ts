@@ -1,0 +1,2 @@
+export const SITE_TITLE = "Shahbaz Fareed";
+export const SITE_DESCRIPTION = "Shahbaz Fareed — AI & ML Researcher & Software Engineer. Expert in RAG pipelines, intelligent systems, and high-performance applications.";

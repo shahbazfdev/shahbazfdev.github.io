@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/home/Hero.astro';
+import Services from '../components/home/Services.astro';
+import FeaturedWork from '../components/home/FeaturedWork.astro';
+import AboutBrief from '../components/home/AboutBrief.astro';
+import BlogBrief from '../components/home/BlogBrief.astro';
+import ContactForm from '../components/home/ContactForm.astro';
+
+const allblogs = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const featuredProjects = (await getCollection('projects'))
+  .filter(p => p.data.featured)
+  .sort((a, b) => b.data.order - a.data.order);
+---
+
+<Layout title="AI & ML Researcher">
+  <Hero />
+  <Services />
+  <FeaturedWork projects={featuredProjects} />
+  <AboutBrief />
+  <BlogBrief posts={allblogs} />
+  <ContactForm />
+</Layout>

@@ -100,4 +100,3 @@ This project is open-source and available under the [MIT License](LICENSE).
 <p align="center">
   By <a href="https://github.com/shahbazfareed">Shahbaz Fareed</a>
 </p>
-# shahbazfdev.github.io

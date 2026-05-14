@@ -1,25 +1,23 @@
-# 🌌 Shahbaz Fareed — Portfolio
+# Shahbaz Fareed — Portfolio
 
-A high-performance, aesthetically driven portfolio website built with **Astro 6** and **Tailwind CSS**. Designed for AI/ML Researchers and Software Engineers, featuring a sleek dark mode, smooth transitions, and a modern project showcase.
-
-![Portfolio Preview](https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2426&ixlib=rb-4.0.3)
+A high-performance, aesthetically driven portfolio website built with Astro 6 and Tailwind CSS. Designed for AI/ML Researchers and Software Engineers, featuring a sleek dark mode, smooth transitions, and a modern project showcase.
 
 ---
 
-## ✨ Features
+## Features
 
-- 🚀 **Built with Astro 6**: Ultra-fast performance with zero-JS by default.
-- 🎨 **Modern Aesthetics**: Premium design with dark/light mode support.
-- 📱 **Fully Responsive**: Optimized for all devices from mobile to desktop.
-- 🛠️ **Project Showcase**: Detailed case studies and project grids.
-- 📝 **Blog Engine**: Built-in support for technical articles and insights.
-- 📬 **Contact System**: Integrated contact form for inquiries.
-- 🧪 **AI/ML Focus**: Tailored sections for research and intelligent systems.
-- ⚡ **Optimized Assets**: Image optimization and lazy loading.
+- **Built with Astro 6**: Ultra-fast performance with zero-JS by default.
+- **Modern Aesthetics**: Premium design with dark/light mode support.
+- **Fully Responsive**: Optimized for all devices from mobile to desktop.
+- **Project Showcase**: Detailed case studies and project grids.
+- **Blog Engine**: Built-in support for technical articles and insights.
+- **Contact System**: Integrated contact form for inquiries.
+- **AI/ML Focus**: Tailored sections for research and intelligent systems.
+- **Optimized Assets**: Image optimization and lazy loading.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Framework:** [Astro](https://astro.build/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
@@ -29,7 +27,7 @@ A high-performance, aesthetically driven portfolio website built with **Astro 6*
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repository
 ```bash
@@ -46,7 +44,7 @@ npm install
 ```bash
 npm run dev
 ```
-Your site is now running at `http://localhost:4321`!
+Your site is now running at `http://localhost:4321`.
 
 ### 4. Build for production
 ```bash
@@ -55,7 +53,7 @@ npm run build
 
 ---
 
-## 🌐 Deployment on Vercel
+## Deployment on Vercel
 
 This project is optimized for deployment on Vercel.
 
@@ -65,11 +63,11 @@ This project is optimized for deployment on Vercel.
    - **Build Command:** `npm run build`
    - **Output Directory:** `dist`
    - **Install Command:** `npm install`
-4. **Deploy!** 🚀
+4. **Deploy!**
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 /
@@ -86,7 +84,7 @@ This project is optimized for deployment on Vercel.
 
 ---
 
-## 📄 License
+## License
 
 This project is open-source and available under the [MIT License](LICENSE).
 

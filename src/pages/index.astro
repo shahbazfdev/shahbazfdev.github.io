@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/home/Hero.astro';
+import TechMarquee from '../components/home/TechMarquee.astro';
 import Services from '../components/home/Services.astro';
 import FeaturedWork from '../components/home/FeaturedWork.astro';
 import AboutBrief from '../components/home/AboutBrief.astro';
@@ -19,6 +20,7 @@ const featuredProjects = (await getCollection('projects'))
 
 <Layout title="AI & ML Researcher">
   <Hero />
+  <TechMarquee />
   <Services />
   <FeaturedWork projects={featuredProjects} />
   <AboutBrief />

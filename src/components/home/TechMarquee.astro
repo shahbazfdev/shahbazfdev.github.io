@@ -1,0 +1,20 @@
+---
+// src/components/home/TechMarquee.astro
+const techs = [
+  "Python", "TensorFlow", "PyTorch", "Astro", "Tailwind CSS", 
+  "Flutter", "Dart", "Docker", "Linux", "SQL", "Flask", "React", "TypeScript"
+];
+
+const marqueeItems = [...techs, ...techs, ...techs];
+---
+<section class="py-10 bg-zinc-50 dark:bg-zinc-900/20 border-y border-zinc-100 dark:border-zinc-800/50 overflow-hidden">
+  <div class="marquee-container">
+    <div class="marquee-content flex items-center gap-16 whitespace-nowrap">
+      {marqueeItems.map((tech) => (
+        <span class="text-xl font-display font-bold text-zinc-300 dark:text-zinc-700 hover:text-accent dark:hover:text-accent transition-colors cursor-default select-none">
+          {tech}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>

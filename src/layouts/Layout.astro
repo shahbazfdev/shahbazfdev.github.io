@@ -48,11 +48,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin 
     document.addEventListener('astro:after-swap', setTheme);
   </script>
 
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
   <ClientRouter />
   <slot name="head" />
 </head>
 
 <body class="flex flex-col min-h-screen bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased transition-colors duration-300">
+  <div id="scroll-progress"></div>
   <header id="main-header" class="fixed inset-x-0 top-0 z-50 sticky-header">
     <Navbar />
   </header>
@@ -98,10 +100,41 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || Astro.url.origin 
         });
       }, { threshold: 0.1 });
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Magnetic Buttons
+      document.querySelectorAll('.magnetic').forEach((btn) => {
+        btn.addEventListener('mousemove', (e) => {
+          const rect = btn.getBoundingClientRect();
+          const x = e.clientX - rect.left - rect.width / 2;
+          const y = e.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = 'translate(0px, 0px)';
+        });
+      });
     };
 
     setup();
     document.addEventListener('astro:after-swap', setup);
+
+    // Global listeners
+    window.addEventListener('scroll', () => {
+      // Scroll Progress
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      const pb = document.getElementById('scroll-progress');
+      if (pb) pb.style.width = scrolled + '%';
+
+      // Parallax
+      const parallaxElements = document.querySelectorAll('[data-parallax]');
+      const scrollY = window.scrollY;
+      parallaxElements.forEach((el) => {
+        const speed = el.getAttribute('data-parallax') || '0.1';
+        el.style.transform = `translateY(${scrollY * parseFloat(speed)}px)`;
+      });
+    }, { passive: true });
   </script>
 </body>
 </html>

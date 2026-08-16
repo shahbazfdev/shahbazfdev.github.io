@@ -23,7 +23,7 @@ A high-performance, aesthetically driven portfolio website built with Astro 6 an
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Icons:** [Lucide React](https://lucide.dev/) (via Astro)
 - **Deployment:** [Vercel](https://vercel.com/)
-- **Virtualization:** [Podman](https://podman.io/) & [Podman Compose](https://github.com/containers/podman-compose)
+- **Virtualization:** [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/)
 - **OS Compatibility:** Optimized for [Fedora](https://fedoraproject.org/) and other RHEL-based distributions
 - **Animations:** CSS Transitions & Intersection Observer
 
@@ -44,11 +44,11 @@ npm run dev
 ```
 Your site is now running at `http://localhost:4321`.
 
-### 3. Containerized Setup (Podman)
-If you prefer a containerized environment (highly recommended for Fedora/RHEL users), you can use Podman Compose:
+### 3. Containerized Setup (Docker)
+If you prefer a containerized environment (highly recommended for Fedora/RHEL users), you can use Docker Compose:
 
 ```bash
-podman-compose up
+docker compose up
 ```
 This will start a development sandbox with all dependencies isolated.
 
@@ -63,12 +63,12 @@ This project is optimized for deployment on Vercel.
 2. Import your project into Vercel.
 3. Vercel will automatically detect Astro and use the correct build settings.
 
-### Podman (Production Image)
+### Docker (Production Image)
 For self-hosting or production containerization, a `Containerfile.prod` is provided:
 
 ```bash
-podman build -t portfolio-prod -f Containerfile.prod .
-podman run -d -p 8080:80 portfolio-prod
+docker build -t portfolio-prod -f Containerfile.prod .
+docker run -d -p 8080:80 portfolio-prod
 ```
 This creates a lightweight Nginx-based image containing only the compiled static files.
 
